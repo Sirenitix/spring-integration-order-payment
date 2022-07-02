@@ -4,7 +4,7 @@ import lombok.*;
 import javax.persistence.*;
 
 
-@Entity
+
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
@@ -13,7 +13,7 @@ public class Payment {
     @Id
     @GeneratedValue
     private Long id;
-    @OneToOne
+
     @NonNull
     private Order order;
     @NonNull

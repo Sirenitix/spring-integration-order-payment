@@ -17,7 +17,7 @@ public class OrderService {
     private final RabbitTemplate template;
 
     public void createOrder(BigDecimal amount) {
-        Order order = new Order(LocalDateTime.now(), amount, false);
+        Order order = new Order(LocalDateTime.now().toString(), amount, false);
         template.convertAndSend(MQConfig.EXCHANGE,
                                MQConfig.ROUTING_KEY, order);
     }
