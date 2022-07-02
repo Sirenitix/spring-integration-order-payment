@@ -3,6 +3,7 @@ package com.nurs.rabbitmq.controller;
 import com.nurs.rabbitmq.dto.OrderRequest;
 import com.nurs.rabbitmq.dto.PaymentRequest;
 import com.nurs.rabbitmq.dto.PaymentResponse;
+import com.nurs.rabbitmq.dto.UpdateOrderRequest;
 import com.nurs.rabbitmq.entity.Order;
 import com.nurs.rabbitmq.entity.Payment;
 import com.nurs.rabbitmq.service.OrderService;
@@ -19,10 +20,29 @@ import java.net.URI;
 public class OrderController {
     private final OrderService orderService;
 
+//    @GetMapping("/")
+//    public void getAllOrders() {
+//        orderService.getAllOrders();
+//
+//    }
+
     @PostMapping("/order")
     public void createOrder(
             @RequestBody @Valid OrderRequest orderRequest) {
         orderService.createOrder(orderRequest.getAmount());
+
+    }
+    @DeleteMapping("/order/{id}")
+    public void deleteOrder(@PathVariable(name = "id") @Valid Long id) {
+        orderService.deleteOrder(id);
+
+    }
+
+    @PutMapping("/order/{id}")
+    public void updateOrder(
+            @RequestBody @Valid UpdateOrderRequest updateOrderRequest, @PathVariable(name = "id") @Valid Long id ) {
+        updateOrderRequest.setId(id);
+        orderService.updateOrder(updateOrderRequest);
 
     }
 
