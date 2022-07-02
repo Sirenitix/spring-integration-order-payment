@@ -1,4 +1,4 @@
-package com.nurs.rabbitmq;
+package com.nurs.rabbitmq.config;
 
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
