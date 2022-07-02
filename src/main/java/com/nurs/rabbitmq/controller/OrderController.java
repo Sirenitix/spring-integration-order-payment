@@ -14,17 +14,18 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import java.net.URI;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 public class OrderController {
     private final OrderService orderService;
 
-//    @GetMapping("/")
-//    public void getAllOrders() {
-//        orderService.getAllOrders();
-//
-//    }
+    @GetMapping("/")
+    public List<Order> getAllOrders() {
+       return orderService.getAllOrders();
+
+    }
 
     @PostMapping("/order")
     public void createOrder(
@@ -45,6 +46,9 @@ public class OrderController {
         orderService.updateOrder(updateOrderRequest);
 
     }
+
+
+
 
 //    @GetMapping("/order/{id}")
 //    public ResponseEntity<Order> getOrder(@PathVariable("id") Long orderId) {
