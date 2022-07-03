@@ -1,5 +1,6 @@
 package com.nurs.rabbitmq.handler;
 
+import com.nurs.rabbitmq.exceptions.OrderAlreadyPaid;
 import com.nurs.rabbitmq.exceptions.OrderNotFound;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -17,6 +18,13 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     String badCredentials() {
         return "Bad request incorrect inputs";
+    }
+
+    @ResponseBody
+    @ExceptionHandler(OrderAlreadyPaid.class)
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    String orderAlreadyPaid() {
+        return "Order already paid";
     }
 
     @ResponseBody

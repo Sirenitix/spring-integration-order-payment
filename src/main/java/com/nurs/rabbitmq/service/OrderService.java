@@ -6,6 +6,7 @@ import com.nurs.rabbitmq.dto.DeleteOrderRequest;
 import com.nurs.rabbitmq.dto.PaymentRequestWithId;
 import com.nurs.rabbitmq.dto.UpdateOrderRequest;
 import com.nurs.rabbitmq.entity.Order;
+import com.nurs.rabbitmq.exceptions.OrderAlreadyPaid;
 import com.nurs.rabbitmq.exceptions.OrderNotFound;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -69,7 +70,8 @@ public class OrderService {
 
 
     public void pay(Long orderId, String creditCardNumber) {
-        getOrderById(orderId);
+        Order order = getOrderById(orderId);
+        if(order.getPaid()) throw new OrderAlreadyPaid();
         PaymentRequestWithId response = new PaymentRequestWithId(orderId, creditCardNumber);
         template.convertAndSend(MQConfig.EXCHANGE,
                 MQConfig.ROUTING_KEY_4, response);
