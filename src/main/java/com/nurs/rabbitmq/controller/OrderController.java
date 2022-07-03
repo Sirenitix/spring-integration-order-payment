@@ -38,7 +38,7 @@ public class OrderController {
     @PostMapping("/order")
     public ResponseEntity<String> createOrder(
             @Valid @RequestBody OrderRequest orderRequest) {
-        orderService.createOrder(orderRequest.getAmount());
+        orderService.createOrder(orderRequest.getAmount(), orderRequest.getEmail());
         return ResponseEntity.ok().body("Success");
     }
     @DeleteMapping("/order/{id}")

@@ -26,5 +26,8 @@ public class UpdateOrderRequest {
         private BigDecimal amount;
         @NonNull
         private Boolean paid;
+        @Email
+        @NonNull
+        private String email;
 
 }

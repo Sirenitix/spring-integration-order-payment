@@ -16,5 +16,7 @@ public class Order {
     private BigDecimal amount;
     @NonNull
     private Boolean paid;
+    @NonNull
+    private String email;
 
 }

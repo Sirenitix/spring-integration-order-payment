@@ -2,11 +2,9 @@ package com.nurs.rabbitmq.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 
-import javax.validation.constraints.DecimalMax;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.math.BigDecimal;
 
 
@@ -17,6 +15,10 @@ public class OrderRequest {
     @DecimalMax(value = "10000000.0",inclusive = false)
     @NotNull
     private BigDecimal amount;
+
+    @Email
+    @NotNull
+    private String email;
 }
 
 
