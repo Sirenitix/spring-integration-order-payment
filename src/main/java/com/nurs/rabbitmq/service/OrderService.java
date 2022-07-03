@@ -41,12 +41,12 @@ public class OrderService {
         DeleteOrderRequest deleteOrderRequest = new DeleteOrderRequest();
         deleteOrderRequest.setId(id);
         template.convertAndSend(MQConfig.EXCHANGE,
-                MQConfig.ROUTING_KEY_2, deleteOrderRequest);
+                MQConfig.ROUTING_KEY_3, deleteOrderRequest);
     }
 
     public void updateOrder(UpdateOrderRequest updateOrderRequest) {
         template.convertAndSend(MQConfig.EXCHANGE,
-                MQConfig.ROUTING_KEY_3, updateOrderRequest);
+                MQConfig.ROUTING_KEY_2, updateOrderRequest);
     }
 
     public List<Order> getAllOrders() {
