@@ -3,10 +3,10 @@ package com.nurs.rabbitmq.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 
 @Data
@@ -14,7 +14,7 @@ import javax.validation.constraints.Min;
 @NoArgsConstructor
 public class DeleteOrderRequest {
 
-    @NonNull
+    @NotNull
     @Max(10000000)
     @Min(0)
     private Long id;
