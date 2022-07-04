@@ -59,8 +59,7 @@ public class OrderController {
     @PostMapping("/order/{id}/payment")
     public ResponseEntity<String> pay(
             @PathVariable("id") Long orderId,
-            @RequestBody @Valid PaymentRequest paymentRequest) {
-
+            @Valid @RequestBody PaymentRequest paymentRequest) {
         orderService.pay(orderId, paymentRequest.getCreditCardNumber());
         return ResponseEntity.ok().body("Success");
     }
